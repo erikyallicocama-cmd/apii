@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: .
+      args:
+        # Para correr SOLO el frontend local, apuntamos al backend local
+        VITE_API_BASE_URL: "http://localhost:8085/api"
+    image: ${DOCKERHUB_USER:-local}/apis-ia-frontend:latest
+    container_name: apis-ia-frontend
+    ports:
+      - "4200:80"
+    networks:
+      - fe-net
+
+networks:
+  fe-net:
+    driver: bridge

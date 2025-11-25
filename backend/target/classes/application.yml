@@ -1,0 +1,23 @@
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://ep-wandering-credit-ad1rsclg-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require
+    username: neondb_owner
+    password: npg_Z1rbhL6RoMOD
+  sql:
+    init:
+      mode: always
+
+google:
+  ai:
+    api-key: "AIzaSyCxcjc__cI4z2UvYFsQ3-9nZw1wOu29McQ"
+    base-url: "https://generativelanguage.googleapis.com/v1beta/models"
+    model: "gemini-1.5-flash"
+image-api:
+  url: "https://ai-text-to-image-generator-flux-free-api.p.rapidapi.com/aaaaaaaaaaaaaaaaaiimagegenerator/quick.php"
+  rapidapi-host: "ai-text-to-image-generator-flux-free-api.p.rapidapi.com"
+  rapidapi-key: "be2f7d6f88msh90cb38b62c3ec62p133936jsn18beb32befd0"
+
+
+server:
+  port: 8085
