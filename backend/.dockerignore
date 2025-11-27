@@ -1,0 +1,19 @@
+# Build outputs
+target/
+
+# VCS and IDE
+.git
+.github
+.idea
+.vscode
+
+# OS and temp
+*.log
+*.tmp
+*.swp
+*.DS_Store
+
+# Env and secrets
+.env
+.env.*
+application-local.yml

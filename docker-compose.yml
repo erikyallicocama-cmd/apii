@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    image: erikson1999/apis-ia-backend:latest
+    container_name: apis-ia-backend
+    ports:
+      - "${BACKEND_PORT:-8081}:8085"
+    networks:
+      - app-net
+
+  frontend:
+    build:
+      context: ./frontend
+    image: erikson1999/apis-ia-frontend:latest
+    container_name: apis-ia-frontend
+    depends_on:
+      - backend
+    ports:
+      - "${FRONTEND_PORT:-5000}:80"
+    environment:
+      # En ejecución por Docker Compose, el Front puede consumir al Back por el nombre del servicio interno
+      VITE_API_BASE_URL: "http://apis-ia-backend:8085/api"
+    networks:
+      - app-net
+
+# Endpoint de acceso al proyecto (requerido por la tarea):
+# http://localhost:5000/apis/ia
+
+networks:
+  app-net:
+    driver: bridge

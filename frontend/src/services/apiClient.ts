@@ -1,4 +1,6 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8085/api';
+// Prefer runtime value injected via public/env.js -> window.__ENV__, then Vite env, then local default
+const runtimeEnv = (typeof window !== 'undefined' && (window as any).__ENV__ && (window as any).__ENV__.VITE_API_BASE_URL) as string | undefined;
+const API_BASE_URL = runtimeEnv || import.meta.env.VITE_API_BASE_URL || 'http://localhost:8081/api';
 
 export class ApiClient {
   private baseURL: string;

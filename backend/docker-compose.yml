@@ -9,8 +9,8 @@ services:
     ports:
       - "8085:8085"
     networks:
-      - be-net
+      - apis-net
 
 networks:
-  be-net:
-    driver: bridge
+  apis-net:
+    external: true

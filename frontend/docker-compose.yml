@@ -5,15 +5,16 @@ services:
     build:
       context: .
       args:
-        # Para correr SOLO el frontend local, apuntamos al backend local
-        VITE_API_BASE_URL: "http://localhost:8085/api"
+        # En despliegues por separado, el frontend hablará con el backend vía Nginx
+        # usando el prefijo /apis/ia (proxy en nginx.conf)
+        VITE_API_BASE_URL: "/apis/ia"
     image: ${DOCKERHUB_USER:-local}/apis-ia-frontend:latest
     container_name: apis-ia-frontend
     ports:
       - "4200:80"
     networks:
-      - fe-net
+      - apis-net
 
 networks:
-  fe-net:
-    driver: bridge
+  apis-net:
+    external: true
